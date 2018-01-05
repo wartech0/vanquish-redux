@@ -1,0 +1,33 @@
+author = "David K and Jordan M";
+onLoadName = Vanquish;
+enableDebugConsole = 1;
+
+// Include definitions and dialogs.
+
+class CfgFunctions
+{
+    class VAN 
+    {
+        class core {
+            class initCapturePoints {};
+            class captureWatchdog {};
+        };
+
+        class utils 
+        {
+            class openArsenal {};
+            class getMapLocations {};
+        };
+    };
+};
+
+class Params 
+{
+    class van_locations_type 
+    {
+        title = "Capture Locations Type";
+        values[] = {0, 1, 2, 3};
+        texts[] = {"Localities", "Villages", "Cities", "Capitals"};
+        default = 2;
+    };
+};
