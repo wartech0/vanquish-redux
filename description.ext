@@ -9,7 +9,7 @@ class CfgFunctions
     class VAN 
     {
         class core {
-            class initCapturePoints {};
+            class initCapturePoint {};
             class captureWatchdog {};
         };
 
@@ -17,6 +17,7 @@ class CfgFunctions
         {
             class openArsenal {};
             class getMapLocations {};
+            class getDominantSide {};
         };
     };
 };
@@ -29,5 +30,495 @@ class Params
         values[] = {0, 1, 2, 3};
         texts[] = {"Localities", "Villages", "Cities", "Capitals"};
         default = 2;
+    };
+
+    class van_capture_base
+    {
+        title = "Capture Value Coefficient";
+        values[] = {0, 1, 2, 3};
+        texts[] = {"1", "2.5", "5", "10"};
+        default = 
+    };
+};
+
+class TargetLocations
+{
+    class Cities 
+    {
+        class City1
+        {
+            name = "Lifou";
+            position[] = { 7247.641, 8002.237 };
+            size[] = { 230.337, 222.207 };
+            rotation = 0;
+        };
+        
+        class City2
+        {
+            name = "Blue Pearn Industrial Port";
+            position[] = { 13572.018, 12169.145 };
+            size[] = { 676.471, 558.365 };
+            rotation = 0;
+        };
+
+        class City3
+        {
+            name = "Katkoula";
+            position[] = { 5462.406, 4104.023 };
+            size[] = { 277.978, 426.399 };
+            rotation = 60.008;
+        };
+
+        class City4
+        {
+            name = "Moddergat";
+            position[] = { 9400.085, 4075.024 };
+            size[] = { 167.703, 245.449 };
+            rotation = 15;
+        };
+
+        class City5
+        {
+            name = "Tanouka";
+            position[] = { 8870.839, 10261.146 };
+            size[] = { 373.530, 217.587 };
+            rotation = 300;
+        };
+
+        class City6
+        {
+            name = "Harcourt";
+            position[] = { 11208.467, 5229.833 };
+            size[] = { 267.262, 166.210 };
+            rotation = 315;
+        };
+
+        class City7
+        {
+            name = "Saint-Julien";
+            position[] = { 5873.974, 11105.263 };
+            size[] = { 325.904, 187.559 };
+            rotation = 345;
+        };
+
+        class City8
+        {
+            name = "Balavu";
+            position[] = { 2656.173, 7339.873 };
+            size[] = { 285.248, 136.25 };
+            rotation = 14.997;
+        };
+
+        class City9 
+        {
+            name = "Ouméré";
+            position[] = { 12794.792, 7378.401 };
+            size[] = { 363.136, 201.457 };
+            rotation = 269.973;
+        };
+
+        class City10
+        {
+            name = "Nicolet";
+            position[] = { 6335.49, 12808.215 };
+            size[] = { 292.416, 133.852 };
+            rotation = 330;
+        };
+
+        class City11
+        {
+            name = "Doodstil";
+            position[] = { 12780.027, 4800.829 };
+            size[] = { 156.276, 158.796 };
+            rotation = 0;
+        };
+
+        class City12
+        {
+            name = "Lijnhaven";
+            position[] = { 11585.95, 2708 };
+            size[] = { 395.332, 263.616 };
+            rotation = 29.926;
+        };
+
+        class City13 
+        {
+            name = "La Rochelle";
+            position[] = { 9510.354, 13462.061 };
+            size[] = { 710.808, 451.958 };
+            rotation = 15.015;
+        };
+
+        class City14
+        {
+            name = "Tuvanaka";
+            position[] = { 1818.383, 12021.53 };
+            size[] = { 270.499, 279.088 };
+            rotation = 0;
+        };
+    };
+
+    class Villages
+    {
+        class Village1
+        {
+            name = "Lami";
+            position[] = { 7914.022, 7638.408 };
+            size[] = { 191.563, 390.950 };
+            rotation = 0;
+        };
+
+        class Village2
+        {
+            name = "Lobaka";
+            position[] = { 6216.765, 8620.383 };
+            size[] = { 371.594, 390.950 };
+            rotation = 0;
+        };
+
+        class Village3
+        {
+            name = "Lakatoro";
+            position[] = { 7914.022, 7638.408 };
+            size[] = { 191.563, 390.950 };
+            rotation = 0;
+        };
+
+        class Village4
+        {
+            name = "La Foa";
+            position[] = { 8991.812, 4734.231 };
+            size[] = { 137.190, 107.299 };
+            rotation = 315.174;
+        };
+
+        class Village5
+        {
+            name = "Savaka";
+            position[] = { 7117.472, 4229.019 };
+            size[] = { 118.888, 122.093 };
+            rotation = 0;
+        };
+
+        class Village6
+        {
+            name = "Regina";
+            position[] = { 5179.281, 8679.334 };
+            size[] = { 330.435, 226.234 };
+            rotation = 0;
+        };
+
+        class Village7
+        {
+            name = "Lösi";
+            position[] = { 10195.407, 5014.787 };
+            size[] = { 150.690, 114.1 };
+            rotation = 0;
+        };
+
+        class Village8
+        {
+            name = "Tobakoro";
+            position[] = { 8889.316, 3618.309 };
+            size[] = { 201.554, 114.1 };
+            rotation = 45;
+        };
+
+        class Village9
+        {
+            name = "Kotomo";
+            position[] = { 10860.644, 4229.019 };
+            size[] = { 244.367, 182.913 };
+            rotation = 45;
+        };
+
+        class Village10
+        {
+            name = "Rautake";
+            position[] = { 3422.823, 6662.103 };
+            size[] = { 200.093, 212.871 };
+            rotation = 0;
+        };
+
+        class Village11
+        {
+            name = "Buawa";
+            position[] = { 8269.554, 11107.449 };
+            size[] = { 66.148, 94.809 };
+            rotation = 0;
+        };
+
+        class Village12
+        {
+            name = "Namuvaka";
+            position[] = { 2771.532, 5658.256 };
+            size[] = { 66.148, 116.485 };
+            rotation = 0;
+        };
+
+        class Village13
+        {
+            name = "Vagalala";
+            position[] = { 10999.769, 9726.258 };
+            size[] = { 199.971, 268.438 };
+            rotation = 0;
+        };
+
+
+        class Village14
+        {
+            name = "Imone";
+            position[] = { 10442.29, 10557.413 };
+            size[] = { 199.971, 140.852 };
+            rotation = 0;
+        };
+
+        class Village15
+        {
+            name = "Leqa";
+            position[] = { 2337.577, 8168.220 };
+            size[] = { 104.767, 104.714 };
+            rotation = 0;
+        };
+
+        class Village16
+        {
+            name = "Galili";
+            position[] = { 8184.932, 11952.678 };
+            size[] = { 270.240, 148.519 };
+            rotation = 0;
+        };
+
+        class Village17
+        {
+            name = "Sosovu";
+            position[] = { 2663.301, 9290.635 };
+            size[] = { 78.042, 93.593 };
+            rotation = 0;
+        };
+
+        class Village18
+        {
+            name = "Blerick";
+            position[] = { 10369.385, 2657.516 };
+            size[] = { 108.462, 111.103 };
+            rotation = 0;
+        };
+
+        class Village19
+        {
+            name = "Yanukka";
+            position[] = { 3039.706, 3404.461 };
+            size[] = { 428.761, 348.326 };
+            rotation = 0;
+        };
+
+        class Village20
+        {
+            name = "Oua-Oué";
+            position[] = { 5730.554, 12289.864 };
+            size[] = { 127.113, 107.018 };
+            rotation = 0;
+        };
+
+        class Village21
+        {
+            name = "Cerebu";
+            position[] = { 2163.033, 4576.248 };
+            size[] = { 101.425, 107.018 };
+            rotation = 0;
+        };
+
+        class Village22
+        {
+            name = "Laikoro";
+            position[] = { 9250.805, 8647.288 };
+            size[] = { 163.355, 148.956 };
+            rotation = 0;
+        };
+
+        class Village23
+        {
+            name = "Saioko";
+            position[] = { 12391.333, 4524.701 };
+            size[] = { 88.401, 124.122 };
+            rotation = 0;
+        };
+
+        class Village24
+        {
+            name = "Belfort";
+            position[] = { 3078.657, 11143.432 };
+            size[] = { 218.809, 235.862 };
+            rotation = 0;
+        };
+
+        class Village25
+        {
+            name = "Muaceba";
+            position[] = { 1604.599, 8497.5 };
+            size[] = { 67.214, 64.217 };
+            rotation = 0;
+        };
+
+        class Village26
+        {
+            name = "Lailai";
+            position[] = { 3629.566, 2154.172 };
+            size[] = { 118.452, 103.461 };
+            rotation = 0;
+        };
+
+        class Village27
+        {
+            name = "Tavu";
+            position[] = { 970.377, 7670.899 };
+            size[] = { 214.046, 174.669 };
+            rotation = 0;
+        };
+
+        class Village28
+        {
+            name = "Nani";
+            position[] = { 1926.076, 10680.648 };
+            size[] = { 50.863, 85.813 };
+            rotation = 0;
+        };
+
+        class Village29
+        {
+            name = "Petit Nicolet";
+            position[] = { 6930.234, 13352.534 };
+            size[] = { 273.105, 141.231 };
+            rotation = 0;
+        };
+
+        class Village30
+        {
+            name = "Port-Boisé";
+            position[] = { 12716.05, 3255.489 };
+            size[] = { 91.418, 80.796 };
+            rotation = 0;
+        };
+
+        class Village31
+        {
+            name = "Saint-Paul";
+            position[] = { 7987.387, 13479.498 };
+            size[] = { 196.758, 167.534 };
+            rotation = 0;
+        };
+
+        class Village32
+        {
+            name = "Nasua";
+            position[] = { 11347.57, 12306.77 };
+            size[] = { 134.557, 117.583 };
+            rotation = 0;
+        };
+
+        class Village33
+        {
+            name = "Savu";
+            position[] = { 8624.165, 13669.556 };
+            size[] = { 358.936, 240.641 };
+            rotation = 0;
+        };
+
+        class Village34
+        {
+            name = "Luganville";
+            position[] = { 14010.610, 8368.017 };
+            size[] = { 358.936, 273.690 };
+            rotation = 0;
+        };
+
+        class Village35
+        {
+            name = "Momea";
+            position[] = { 10355.520, 13315.15 };
+            size[] = { 162.772, 161.727 };
+            rotation = 0;
+        };
+
+        class Village36
+        {
+            name = "Koumac";
+            position[] = { 1360.873, 2988.702 };
+            size[] = { 278.378, 150.073 };
+            rotation = 0;
+        };
+
+        class Village37
+        {
+            name = "Taga";
+            position[] = { 12308.883, 1779.296 };
+            size[] = { 107.458, 150.073 };
+            rotation = 0;
+        };
+
+        class Village38
+        {
+            name = "Bua Bua";
+            position[] = { 13374.855, 2966.161 };
+            size[] = { 167.432, 150.073 };
+            rotation = 0;
+        };
+
+        class Village39
+        {
+            name = "Pénélo";
+            position[] = { 10976.056, 13193.703 };
+            size[] = { 168.511, 150.073 };
+            rotation = 0;
+        };
+
+        class Village40
+        {
+            name = "Vatukoulo";
+            position[] = { 14123.062, 9949.149 };
+            size[] = { 46.550, 48.026 };
+            rotation = 0;
+        };
+
+        class Village41
+        {
+            name = "Nandai";
+            position[] = { 14408.347, 8835.67 };
+            size[] = { 99.641, 130.120 };
+            rotation = 0;
+        };
+
+        class Village42
+        {
+            name = "Rereki";
+            position[] = { 12995.699, 2110.123 };
+            size[] = { 99.641, 108.328 };
+            rotation = 0;
+        };
+
+        class Village43
+        {
+            name = "Ovau";
+            position[] = { 12414.585, 12701.241 };
+            size[] = { 185.305, 108.328 };
+            rotation = 0;
+        };
+
+        class Village44
+        {
+            name = "Ba";
+            position[] = { 14249.027, 11590.769 };
+            size[] = { 133.735, 121.130 };
+            rotation = 0;
+        };
+
+        class Village45
+        {
+            name = "Ipota";
+            position[] = { 12341.792, 13949.137 };
+            size[] = { 133.735, 121.13 };
+            rotation = 0;
+        };
     };
 };

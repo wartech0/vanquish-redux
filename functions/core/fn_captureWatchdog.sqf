@@ -4,7 +4,7 @@
 	Author: David K
 	
 	Description:
-	Watchdog operation that wakes periodically to check the ownership status of map points.
+	Watchdog operation that wakes periodically to check the ownership status of map points. Assigns marker a color based on the dominant faction and marks the area as owned by a particular faction.
 
 	Parameter(s):
 		points:
@@ -16,23 +16,26 @@
 		_points spawn VAN_fnc_captureWatchdog
 */
 
+params [["_point", [], [[]]],
+		["_interval", 10, [0]]];
+
+private _marker = _point select 1;
+
 while { true } do {
-	sleep 30;
-	diag_log format ["%1", _this];
+	sleep _interval;
 
-	{
-		private _marker = _x;
-		private _pos = getMarkerPos _marker;
-		private _rad = (getMarkerSize _marker) select 0;
-		private _dom = [_pos, _rad] call ALiVE_fnc_getDominantFaction;
+	private _dom = _marker call VAN_fnc_getDominantSide;
 
-		if (!isNil "_dom") then {
-			switch (_dom) do {
-				case "IND_C_F": { _marker setMarkerColor "ColorGreen" };
-				case "BLU_F": { _marker setMarkerColor "ColorBlue" };
-				case "OPF_F": { _marker setMarkerColor "ColorRed" };
-				default { };
-			};
+	_point set [2, _dom];
+
+	if (!isNil "_dom") then {
+		switch (_dom) do {
+			case "GUER": { _marker setMarkerColor "ColorGreen" };
+			case "WEST": { _marker setMarkerColor "ColorBlue" };
+			case "EAST": { _marker setMarkerColor "ColorRed" };
+			default { _marker setMarkerColor "ColorBlack" };
 		};
-	} forEach _this;
+	};
+
+	diag_log format ["%1", van_target_locations];
 };

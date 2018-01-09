@@ -10,35 +10,37 @@
 
 		0: Name (String)
 		1: Position ([Number, Number])
-		2: Direction (Number)
 		3: Size ([Number, Number])
-		4: Rectangular (Boolean)
+		2: Direction (Number)
 
 	Parameter(s):
-		types:
-			Array of requested location types.
+		filters:
+			Optional list of location filters.
 
 	Returns:
 		The list of locations in the current world matching the given criteria.
 	
 	Examples:
-		["City", "Village"] call VAN_fnc_getMapLocations
+		["Cities", "Villages"] call VAN_fnc_getMapLocations
 */
 
-private _locs = [];
-{
-	private _type_locs = nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), [_x], worldSize];
-	{
-		private _size = size _x;
-		_locs pushBack [
-			text _x, 
-			locationPosition _x, 
-			direction _x, 
-			(_size select 0) max (_size select 1),
-			rectangular _x
-		];
-	} forEach _type_locs;
+private _locations = [];
+private _filters = _this;
 
-} forEach _this;
+private _categories = if (count _filters == 0) then 
+	[{ "true" configClasses (missionConfigFile >> "TargetLocations") }, 
+	 { "configName _x in _filters" configClasses (missionConfigFile >> "TargetLocations") }];
 
-_locs
+{ 
+	private _instances = "true" configClasses _x;
+	_locations = _locations + (_instances apply {
+		[
+			getText (_x >> "name"),
+			getArray (_x >> "position"),
+			getArray (_x >> "size"),
+			getNumber (_x >> "rotation")
+		]
+	});
+} forEach _categories;
+
+_locations
