@@ -3,6 +3,7 @@ onLoadName = Vanquish;
 enableDebugConsole = 1;
 
 // Include definitions and dialogs.
+#include "dialogs\diag_Garage.hpp"
 
 class CfgFunctions
 {
@@ -16,6 +17,7 @@ class CfgFunctions
         class utils 
         {
             class openArsenal {};
+            class garage {};
             class getMapLocations {};
             class getDominantSide {};
         };

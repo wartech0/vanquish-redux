@@ -8,18 +8,18 @@ class EditorData
 	toggles=33;
 	class ItemIDProvider
 	{
-		nextID=412;
+		nextID=414;
 	};
 	class MarkerIDProvider
 	{
-		nextID=30;
+		nextID=31;
 	};
 	class Camera
 	{
-		pos[]={11824.623,26.943745,13150.445};
-		dir[]={-0.38443539,-0.28920841,-0.8768158};
-		up[]={-0.11615527,0.95718324,-0.26492009};
-		aside[]={-0.91593462,-2.1915184e-006,0.40159324};
+		pos[]={11703.165,54.644611,13161.751};
+		dir[]={-0.22894321,-0.69586188,-0.68088424};
+		up[]={-0.22176936,0.71810639,-0.65954506};
+		aside[]={-0.94795102,5.0128438e-007,0.31874955};
 	};
 };
 binarizationWanted=0;
@@ -101,13 +101,14 @@ addons[]=
 	"ace_refuel",
 	"ace_repair",
 	"ace_cargo",
-	"ace_rearm"
+	"ace_rearm",
+	"A3_Structures_F_Mil_Helipads"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=60;
+		items=61;
 		class Item0
 		{
 			className="ALiVE_main";
@@ -496,6 +497,13 @@ class AddonsMetaData
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
+		class Item60
+		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=15684002;
@@ -512,7 +520,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category1
+	class Category0
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -581,7 +589,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=180;
+		items=181;
 		class Item0
 		{
 			dataType="Logic";
@@ -9128,8 +9136,8 @@ class Mission
 				condition="call{this && (player in thisList)}";
 				onActivation="call{player setVariable [""arsenal_action_id"", player addAction [""Virtual Arsenal"", VAN_fnc_openArsenal]];}";
 				onDeactivation="call{player removeAction (player getVariable ""arsenal_action_id"");}";
-				sizeA=4.122272;
-				sizeB=4.0359635;
+				sizeA=4.1220002;
+				sizeB=4.0359998;
 				sizeC=0;
 				repeatable=1;
 				activationBy="WEST";
@@ -10528,12 +10536,12 @@ class Mission
 					class PositionInfo
 					{
 						position[]={11796.58,6.9514389,13063.016};
-						angles[]={0,6.2831855,-0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
+						init="call{this addAction [""Virtual Garage"", VAN_fnc_garage];}";
 						class Inventory
 						{
 							class uniform
@@ -10679,7 +10687,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11588.327,8.866004,13154.613};
-				angles[]={0,4.9741902,-0};
+				angles[]={0,4.9741902,0};
 			};
 			side="Empty";
 			flags=4;
@@ -10702,7 +10710,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={11582.39,6.9514389,13160.573};
-						angles[]={-0,4.9741888,0};
+						angles[]={0,4.9741888,0};
 					};
 					side="West";
 					flags=6;
@@ -10745,7 +10753,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11582.39,9.2634773,13160.523};
-				angles[]={-0,4.9741888,0};
+				angles[]={0,4.9741888,0};
 			};
 			side="West";
 			flags=6;
@@ -10768,7 +10776,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={11597.41,6.9514389,13156.282};
-						angles[]={-0,4.9741888,0};
+						angles[]={0,4.9741888,0};
 					};
 					side="West";
 					flags=6;
@@ -10804,6 +10812,7 @@ class Mission
 				};
 			};
 			id=409;
+			atlOffset=-4.7683716e-007;
 		};
 		class Item179
 		{
@@ -10811,7 +10820,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11597.41,8.8755856,13156.232};
-				angles[]={-0,4.9741888,0};
+				angles[]={0,4.9741888,0};
 			};
 			side="West";
 			flags=6;
@@ -10820,6 +10829,24 @@ class Mission
 			};
 			id=410;
 			type="B_Truck_01_ammo_F";
+			atlOffset=-4.7683716e-007;
+		};
+		class Item180
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11781.835,7.0032954,13056.098};
+				angles[]={0,0.2617994,6.2820935};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="GARAGE_LANDSPAWN";
+			};
+			id=413;
+			type="Land_HelipadSquare_F";
 		};
 	};
 	class Connections
